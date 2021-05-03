@@ -1,0 +1,230 @@
+<div class="w-100 d-flex position-relative table-wrapper">
+
+
+<table class="table table-bordered table-striped col-5 gdsn-table col-5">
+  <thead> 
+    <th class="no-border"></th>
+    <th>GDSN Value</th>
+  </thead>
+  <tbody>
+    <p class="position-absolute datapool">1WORLDSYNC DATA POOL</p>
+    <tr>
+      <th>
+        <div>SCORE</div>
+      </th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        <div>GTIN</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('gtin')}">
+        <div>{{expandedData?.gdsnItem.gtin}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Alternate ID</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('additionalIdentifier')}">
+        <div>{{expandedData?.gdsnItem.additionalIdentifier[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Short Description</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('gdsnShortDescription')}">
+          <div #tooltip="matTooltip"
+          matTooltip="{{expandedData?.gdsnItem.gdsnShortDescription[0]}}"
+          [matTooltipPosition]="positionOptions[1]"
+          matTooltipHideDelay="100" matTooltipClass="long-tooltip">{{expandedData?.gdsnItem.gdsnShortDescription[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Long Description</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('additionalDescription')}">
+        <div #tooltip="matTooltip"
+        matTooltip="{{expandedData?.gdsnItem.additionalDescription[0]}}"
+        [matTooltipPosition]="positionOptions[1]"
+        matTooltipHideDelay="100" matTooltipClass="long-tooltip">{{expandedData?.gdsnItem.additionalDescription[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Brand</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('brandName')}">
+        <div>{{expandedData?.gdsnItem.brandName[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Height</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('height')}">
+        <div>{{expandedData?.gdsnItem.height[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Width</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('width')}">
+        <div>{{expandedData?.gdsnItem.width[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Depth</div>
+      </th>
+      <!-- length -->
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('depth')}">
+        <div>{{expandedData?.gdsnItem.depth[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Net Weight</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('netWeight')}">
+        <div>{{expandedData?.gdsnItem.netWeight[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Gross Weight</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('grossWeight')}">
+        <div>{{expandedData?.gdsnItem.grossWeight[0]}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Storage Temp Min</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('temperatureMin')}">
+        <div>{{expandedData?.gdsnItem.temperatureMin[0] ? expandedData?.gdsnItem.temperatureMin[0].temperature : ''}} {{expandedData?.gdsnItem.temperatureMin[0] ? expandedData?.gdsnItem.temperatureMin[0].unit : ''}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Storage Temp Max</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('temperatureMax')}">
+        <div>{{expandedData?.gdsnItem.temperatureMax[0] ? expandedData?.gdsnItem.temperatureMax[0].temperature : ''}} {{expandedData?.gdsnItem.temperatureMax[0] ? expandedData?.gdsnItem.temperatureMax[0].unit : ''}}</div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <div>Variable Unit</div>
+      </th>
+      <td [ngClass]="{'highlight' : expandedData?.gdsnItem.matchedFields.includes('variableUnit')}">
+        <div>{{expandedData?.gdsnItem.variableUnit[0]}}</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="position-absolute imported-master">IMPORTED MASTER</p>
+<!-- <div class="overflow-auto d-flex matches col-7"> -->
+  <mat-radio-group aria-label="Select an option" class="overflow-auto d-flex matches col-7">
+<div class="select-item col-5 p-0 mr-2" *ngFor="let item of expandedData?.matchedItems">
+  <div class="form-check form-check-inline position-absolute">
+    <mat-radio-button value="{{item.itemId}}" [disableRipple]="true" [checked]="item.itemId === item.previousSelection" (change)="radioSelect(expandedData?.gdsnItem.gtin ,item)">Select this item</mat-radio-button>
+    <!-- <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="{{item.itemId}}" (change)="radioSelect(expandedData?.gdsnItem.gtin ,item)" [checked]="item.checked"> -->
+    <!-- <label class="form-check-label" for="inlineRadio1">Select this item</label> -->
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <th>Item Master</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div>{{item['ref-data']?.score}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'itemId'}">
+          <div>{{item.itemId}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'alternateItemIdentificationid'}">
+          <div>{{item.alternateItemIdentificationid || item.alternateId}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'shortDescription'}">
+          <div #tooltip="matTooltip"
+          matTooltip="{{item.shortDescription}}"
+          [matTooltipPosition]="positionOptions[1]"
+          matTooltipHideDelay="100" matTooltipClass="long-tooltip">
+            {{item.shortDescription}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'productDescription'}">
+          <div #tooltip="matTooltip"
+          matTooltip="{{item.productDescription}}"
+          [matTooltipPosition]="positionOptions[1]"
+          matTooltipHideDelay="100" matTooltipClass="long-tooltip">
+            {{item.productDescription}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'brandName'}">
+          <div>{{item.brandName}}</div> 
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'height'}">
+          <div>{{item.height}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'width'}">
+          <div>{{item.width}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'depth'}">
+          <div>{{item.depth}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'netWeight'}">
+          <div>{{item.netWeight}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'grossWeight'}">
+          <div>{{item.grossWeight}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'minimumTemperature'}">
+          <div>{{item.minimumTemperature}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'maximumTemperature'}">
+          <div>{{item.maximumTemperature}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="{'highlight' : item['ref-data']?.leadIndicatorField === 'variableWeightTradeItem'}">
+          <div>{{item.variableWeightTradeItem}}</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</mat-radio-group>
+<!-- </div> -->
+</div>

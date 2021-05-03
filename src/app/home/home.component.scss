@@ -1,0 +1,180 @@
+.position-relative {
+  button {
+    text-transform: uppercase;
+  }
+  h2 {
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+button {
+  outline: none;
+  border-color: #666666 !important;
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  tr {
+    td:first-child {
+      width: 50px;
+    }
+  }
+}
+
+.mat-row:nth-child(2n+1){
+  background-color:#ffffff;
+}
+.mat-row:not(:nth-child(4n+1)){
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+// .mat-checkbox {
+  ::ng-deep .mat-checkbox-layout {
+    margin-bottom: 2px;
+  }
+  ::ng-deep .mat-checkbox-inner-container {
+    width: 18px;
+    height: 18px;
+  }
+// }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: #3C6806!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #3C6806;
+}
+
+td.mat-column-score {
+  text-align: right;
+  padding-right: 36px;
+}
+
+td.mat-column-status {
+  padding-left: 14px;
+}
+
+.mat-header-row {
+  background-image: linear-gradient(#E7F2E5, #A8CEA0);
+  th {
+    font-weight: bold;
+    color: #000;
+    font-size: 15px;
+    cursor: pointer;
+  }
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.mat-column-expandedDetail {
+  background-color: #fff;
+}
+
+// .example-element-detail {
+//   table {
+//     border: none;
+//     margin-right: 20px;
+//   }
+//   thead {
+//     border: none;
+//     th {
+//       border: none;
+//     }
+//   }
+//   td, th {
+//     padding: 0;
+//     div {
+//       height: 50px;
+//       overflow: auto;
+//       line-height: 50px;
+//       padding-left: 5px;
+//       &::-webkit-scrollbar {
+//         -webkit-appearance: none;
+//       }
+//       &::-webkit-scrollbar:vertical {
+//         width: 11px;
+//       }
+//       &::-webkit-scrollbar:horizontal {
+//         height: 11px;
+//       }
+//       &::-webkit-scrollbar-thumb {
+//         border-radius: 8px;
+//         border: 2px solid white; /* should match background, can't be transparent */
+//         background-color: rgba(0, 0, 0, .5);
+//       }
+//     }
+//   }
+// }
+
+.example-element-row{
+  .caret-down {
+    display: none;
+  }
+  .caret-right {
+    display: inline;
+  }
+  &.example-expanded-row {
+    .caret-down {
+      display: inline;
+    }
+    .caret-right {
+      display: none;
+    }
+  }
+}
+
+
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+::ng-deep .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
+  border-color: #b0b0b073;
+}
